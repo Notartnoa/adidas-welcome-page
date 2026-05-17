@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adidas Indonesia - Sports & Lifestyle</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500&display=swap');
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            min-height: 100vh;
+        }
+
+        body {
+            font-family: 'Oswald', sans-serif;
+            background-color: #000;
+            background-image:
+                radial-gradient(circle at 20% 20%, rgba(255,255,255,0.04) 0%, transparent 40%),
+                radial-gradient(circle at 80% 80%, rgba(255,255,255,0.03) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, #161616 0%, #000 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            padding: 40px 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Subtle grain overlay untuk depth */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(255,255,255,0.008) 2px,
+                    rgba(255,255,255,0.008) 4px
+                );
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Brand stripe accent kiri atas */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 60px;
+            height: 100%;
+            background: repeating-linear-gradient(
+                180deg,
+                transparent,
+                transparent 20px,
+                rgba(255,255,255,0.04) 20px,
+                rgba(255,255,255,0.04) 22px
+            );
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .stage {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 460px;
+        }
+
+        /* Shadow brutalist di belakang */
+        .stage::before {
+            content: '';
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            right: -14px;
+            bottom: -14px;
+            border: 2px solid #fff;
+            background: repeating-linear-gradient(
+                45deg,
+                #0a0a0a,
+                #0a0a0a 6px,
+                #1c1c1c 6px,
+                #1c1c1c 12px
+            );
+            z-index: -1;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(20px) saturate(150%);
+            -webkit-backdrop-filter: blur(20px) saturate(150%);
+            border: 2px solid #fff;
+            padding: 56px 48px 48px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+        }
+
+        .brand-mark {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 18px;
+        }
+
+        .brand-mark .bar {
+            width: 28px;
+            height: 2px;
+            background: #fff;
+        }
+
+        .logo-text {
+            font-size: 48px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            line-height: 1;
+            margin-bottom: 16px;
+        }
+
+        .subtitle {
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
+            font-weight: 500;
+            color: #888;
+            margin-bottom: 8px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .divider {
+            width: 40px;
+            height: 1px;
+            background: rgba(255,255,255,0.3);
+            margin: 0 auto 36px;
+        }
+
+        .section-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 10px;
+            font-weight: 500;
+            color: #666;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-label::before,
+        .section-label::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: rgba(255,255,255,0.12);
+        }
+
+        .btn-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .btn-adidas {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 20px 24px;
+            background: transparent;
+            color: #fff;
+            text-decoration: none;
+            font-family: 'Oswald', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border: 2px solid #fff;
+            transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            text-align: left;
+        }
+
+        .btn-adidas .label {
+            flex: 1;
+        }
+
+        .btn-adidas .arrow {
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            font-size: 18px;
+            transition: transform 0.2s ease;
+            opacity: 0.7;
+        }
+
+        .btn-adidas:hover {
+            background: #fff;
+            color: #000;
+            transform: translate(-4px, -4px);
+            box-shadow: 6px 6px 0px #fff;
+        }
+
+        .btn-adidas:hover .arrow {
+            transform: translateX(4px);
+            opacity: 1;
+        }
+
+        .btn-adidas:active {
+            transform: translate(0, 0);
+            box-shadow: 0 0 0 #fff;
+        }
+
+        .footer-note {
+            font-family: 'Inter', sans-serif;
+            font-size: 10px;
+            color: #555;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .footer-note .dot {
+            width: 4px;
+            height: 4px;
+            background: #fff;
+            border-radius: 50%;
+            opacity: 0.5;
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .container {
+                padding: 44px 28px 36px;
+            }
+            .logo-text {
+                font-size: 38px;
+                letter-spacing: 3px;
+            }
+            .btn-adidas {
+                padding: 18px 20px;
+                font-size: 14px;
+            }
+            .stage::before {
+                top: 10px;
+                left: 10px;
+                right: -10px;
+                bottom: -10px;
+            }
+        }
+
+        /* Entrance animation */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .container > * {
+            animation: fadeUp 0.6s ease-out backwards;
+        }
+        .brand-mark { animation-delay: 0.05s; }
+        .subtitle { animation-delay: 0.15s; }
+        .divider { animation-delay: 0.2s; }
+        .section-label { animation-delay: 0.25s; }
+        .btn-grid .btn-adidas:nth-child(1) { animation: fadeUp 0.6s ease-out 0.3s backwards; }
+        .btn-grid .btn-adidas:nth-child(2) { animation: fadeUp 0.6s ease-out 0.4s backwards; }
+        .btn-grid .btn-adidas:nth-child(3) { animation: fadeUp 0.6s ease-out 0.5s backwards; }
+        .btn-grid .btn-adidas:nth-child(4) { animation: fadeUp 0.6s ease-out 0.6s backwards; }
+        .footer-note { animation-delay: 0.7s; }
+    </style>
+</head>
+<body>
+
+    <div class="stage">
+        <div class="container">
+            <div class="brand-mark">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <div class="logo-text">ADIDAS</div>
+            <div class="subtitle">Virtual Assistant Store</div>
+            <div class="divider"></div>
+
+            <div class="section-label">Select Category</div>
+
+            <div class="btn-grid">
+                <a href="https://wa.me/6285230884725?text=Halo,%20saya%20mau%20tanya%20seputar%20World%20Cup%202026%20Home%20Kits" class="btn-adidas" target="_blank">
+                    <span class="label">World Cup 2026 Home Kits</span>
+                    <span class="arrow">→</span>
+                </a>
+
+                <a href="https://wa.me/6288989442502?text=Halo,%20saya%20mau%20tanya%20seputar%20Accessories" class="btn-adidas" target="_blank">
+                    <span class="label">Accessories</span>
+                    <span class="arrow">→</span>
+                </a>
+
+                <a href="https://wa.me/6282190177120?text=Halo,%20saya%20mau%20tanya%20seputar%20Women's%20Apparel%20%26%20Footwear" class="btn-adidas" target="_blank">
+                    <span class="label">Women's Apparel & Footwear</span>
+                    <span class="arrow">→</span>
+                </a>
+
+                <a href="https://wa.me/628139238580?text=Halo,%20saya%20mau%20tanya%20seputar%20Lifestyle%20Sneakers" class="btn-adidas" target="_blank">
+                    <span class="label">Lifestyle Sneakers</span>
+                    <span class="arrow">→</span>
+                </a>
+            </div>
+
+            <div class="footer-note">
+                <span>Powered by WhatsApp</span>
+                <span class="dot"></span>
+                <span>Indonesia</span>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
